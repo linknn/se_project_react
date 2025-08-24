@@ -1,32 +1,32 @@
 @font-face {
   font-family: "CabinetGrotesk-Black";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Black.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Black.woff") format(woff);
 }
 @font-face {
   font-family: "CabinetGrotesk-Bold";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Bold.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Bold.woff") format(woff);
 }
 @font-face {
   font-family: "CabinetGrotesk-Extrabold";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Extrabold.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Extrabold.woff") format(woff);
 }
 @font-face {
   font-family: "CabinetGrotesk-Extralight";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Extralight.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Extralight.woff") format(woff);
 }
 @font-face {
   font-family: "CabinetGrotesk-Light";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Light.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Light.woff") format(woff);
 }
 @font-face {
   font-family: "CabinetGrotesk-Medium";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Medium.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Medium.woff") format(woff);
 }
 @font-face {
   font-family: "CabinetGrotesk-Regular";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Regular.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Regular.woff") format(woff);
 }
 @font-face {
   font-family: "CabinetGrotesk-Thin";
-  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Thin.woff");
+  src: url("./cabinet-grotesk-webfont/CabinetGrotesk-Thin.woff") format(woff);
 }
