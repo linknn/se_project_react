@@ -4,16 +4,17 @@ import "../vendor/fonts.css";
 import Header from "../components/Header";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
-import WeatherCard from "./WeatherCard";
 
+import { defaultClothingItems } from "../utils/defaultClothingItems";
 import "../blocks/App.css";
 
 function App() {
+  //Save as state (useState)
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   return (
     <div className="app">
       <Header />
-      <WeatherCard />
-      <Main />
+      <Main clothingItems={clothingItems} />
       <Footer />
     </div>
   );

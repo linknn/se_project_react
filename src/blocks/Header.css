@@ -2,8 +2,6 @@
   display: flex;
   height: 40px;
   align-items: center;
-  /* browser recognizes font but doesnt display properly */
-  font-family: "CabinetGrotesk-Bold";
   font-size: 20px;
   line-height: 24px;
   margin-bottom: 28px;
