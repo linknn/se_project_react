@@ -16,6 +16,8 @@ function App() {
       <Header />
       <Main clothingItems={clothingItems} />
       <Footer />
+      {/*<ModalWithForm />
+      <ItemModal /> */}
     </div>
   );
 }

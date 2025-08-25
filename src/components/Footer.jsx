@@ -1,5 +1,12 @@
+import "../blocks/Footer.css";
+
 function Footer() {
-  return <></>;
+  return (
+    <footer className="footer">
+      <p className="footer__author">Link Nelson</p>
+      <p className="footer__copyright">2025</p>
+    </footer>
+  );
 }
 
 export default Footer;
