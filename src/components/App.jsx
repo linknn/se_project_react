@@ -4,6 +4,7 @@ import "../vendor/fonts.css";
 import Header from "../components/Header";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
+import ItemModal from "./ItemModal";
 
 import { defaultClothingItems } from "../utils/defaultClothingItems";
 import "../blocks/App.css";
@@ -11,13 +12,20 @@ import "../blocks/App.css";
 function App() {
   //Save as state (useState)
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [activeModal, setActiveModal] = useState("");
+
+  function handleOpenItemModal() {
+    setActiveModal("item-modal");
+    console.log(activeModal);
+  }
+
   return (
     <div className="app">
       <Header />
-      <Main clothingItems={clothingItems} />
+      <Main clothingItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />
       <Footer />
-      {/*<ModalWithForm />
-      <ItemModal /> */}
+      {/*<ModalWithForm />*/}
+      <ItemModal card={{ name: "asdf" }} isOpen={activeModal === "item-modal"} />
     </div>
   );
 }
