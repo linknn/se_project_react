@@ -1,6 +1,5 @@
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
-import "../blocks/Main.css";
 
 function Main({ clothingItems, handleOpenItemModal }) {
   return (

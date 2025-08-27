@@ -1,5 +1,4 @@
 import cloudy from "../images/cloudy.png";
-import "../blocks/WeatherCard.css";
 
 function WeatherCard() {
   return (

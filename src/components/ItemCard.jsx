@@ -1,5 +1,3 @@
-import "../blocks/ItemCard.css";
-
 function ItemCard({ data, onCardClick }) {
   return (
     <li className="card">

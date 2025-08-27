@@ -1,6 +1,5 @@
 import logo from "../images/logo.png";
 import avatar from "../images/terrence.png";
-import "../blocks/Header.css";
 
 function Header() {
   const now = new Date();
