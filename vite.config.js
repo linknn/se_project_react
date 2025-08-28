@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   // add the server object
+  base: "/se_project_react/",
   server: {
     port: 3000,
   },
