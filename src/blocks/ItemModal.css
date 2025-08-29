@@ -12,11 +12,48 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
-  /* z-index: 2; */
 }
 
 .modal_is-opened {
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
+}
+
+.modal__container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal__image {
+  display: block;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: none;
+  background-color: #00000080;
+  border-radius: 16px;
+  transition: opacity 0.5s;
+  padding: 8px;
+}
+
+.modal__close-btn:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
+.modal__footer {
+  background: #ffffff;
+  padding: 20px 0 20px 32px;
+}
+
+.modal__text {
+  font-size: 20px;
+  color: #000000;
+  margin: 0;
+  padding-bottom: 12px;
 }

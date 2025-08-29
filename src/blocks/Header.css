@@ -21,6 +21,7 @@
   padding: 0 20px 0 0;
   background-color: transparent;
   border: none;
+  transition: opacity 0.5s;
 }
 
 .header__add-clothes-btn:hover {

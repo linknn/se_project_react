@@ -11,10 +11,16 @@ function App() {
   //Save as state (useState)
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
 
-  function handleOpenItemModal() {
+  function handleOpenItemModal(card) {
     setActiveModal("item-modal");
-    console.log(activeModal);
+    setSelectedCard(card);
+  }
+
+  function handleCloseItemModal() {
+    setActiveModal("");
+    setSelectedCard({});
   }
 
   return (
@@ -23,7 +29,11 @@ function App() {
       <Main clothingItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />
       <Footer />
       {/*<ModalWithForm />*/}
-      <ItemModal card={{ name: "asdf" }} isOpen={activeModal === "item-modal"} />
+      <ItemModal
+        card={selectedCard}
+        isOpen={activeModal === "item-modal"}
+        onClose={handleCloseItemModal}
+      />
     </div>
   );
 }
