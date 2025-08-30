@@ -80,7 +80,6 @@
   margin-top: 8px;
   border: none;
   border-bottom: 1px solid;
-  /* padding-top: 4px; */
   width: 100%;
 }
 
@@ -106,5 +105,16 @@
   border: none;
   background: #000000;
   color: #ffffff;
+  transition: 0.5s;
   margin-top: 24px;
+}
+
+.modal__submit-btn:hover,
+.modal__radio-btn:hover,
+.modal__label:hover {
+  cursor: pointer;
+}
+
+.modal__submit-btn:hover {
+  background: #00000099;
 }
