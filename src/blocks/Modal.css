@@ -20,6 +20,23 @@
   transition-delay: 0s;
 }
 
+.modal__close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: none;
+  background: transparent;
+  transition: opacity 0.5s;
+  padding: 8px;
+}
+
+.modal__close-btn:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
+/* Item modal */
+
 .modal__container {
   position: relative;
   border-radius: 16px;
@@ -28,22 +45,6 @@
 
 .modal__image {
   display: block;
-}
-
-.modal__close-btn {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  border: none;
-  background-color: #00000080;
-  border-radius: 16px;
-  transition: opacity 0.5s;
-  padding: 8px;
-}
-
-.modal__close-btn:hover {
-  cursor: pointer;
-  opacity: 50%;
 }
 
 .modal__footer {
@@ -56,4 +57,28 @@
   color: #000000;
   margin: 0;
   padding-bottom: 12px;
+}
+
+/* Form Modal */
+
+.modal__container_type_form {
+  background: #ffffff;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.modal__title {
+  margin: 0;
+}
+
+.modal__input {
+  display: block;
+}
+
+.modal__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
