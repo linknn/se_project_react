@@ -98,6 +98,15 @@
   margin-bottom: 8px;
 }
 
+.modal__label_type_radio {
+  color: #00000080;
+}
+
+/* why no workie */
+.modal__label_type_radio:checked {
+  color: #000000;
+}
+
 .modal__submit-btn {
   width: 124px;
   height: 36px;
