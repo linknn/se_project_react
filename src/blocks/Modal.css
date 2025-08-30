@@ -102,8 +102,8 @@
   color: #00000080;
 }
 
-/* why no workie */
-.modal__label_type_radio:checked {
+/* why no workie: need to link to the btn somehow? */
+.modal__radio-btn:checked + .modal__label_type_radio {
   color: #000000;
 }
 
