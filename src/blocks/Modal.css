@@ -100,9 +100,9 @@
 
 .modal__label_type_radio {
   color: #00000080;
+  transition: 0.3s;
 }
 
-/* why no workie: need to link to the btn somehow? */
 .modal__radio-btn:checked + .modal__label_type_radio {
   color: #000000;
 }
