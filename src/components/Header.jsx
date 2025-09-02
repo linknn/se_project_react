@@ -1,7 +1,7 @@
 import logo from "../images/logo.png";
 import avatar from "../images/terrence.png";
 
-function Header({ handleOpenClothesModal }) {
+function Header({ handleOpenClothesModal, weatherData }) {
   const now = new Date();
   const dateStr = now.toLocaleDateString("default", {
     month: "long",
@@ -15,7 +15,7 @@ function Header({ handleOpenClothesModal }) {
         <time className="header__dateime" dateTime={now}>
           {dateStr}
         </time>
-        , Seattle
+        , {[weatherData.city]}
       </p>
       <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
         + Add clothes
