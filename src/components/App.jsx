@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./Header";
 import Main from "./Main";
@@ -7,6 +7,7 @@ import ItemModal from "./ItemModal";
 import ModalWithForm from "./ModalWithForm";
 
 import { defaultClothingItems } from "../utils/defaultClothingItems";
+import { getWeatherData } from "../utils/weatherApi";
 
 function App() {
   //Save as state (useState)
@@ -37,6 +38,14 @@ function App() {
   //     }
   //   }
   // });
+
+  useEffect(() => {
+    getWeatherData()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <div className="app">
