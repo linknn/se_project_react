@@ -17,8 +17,8 @@ function parseWeatherData(data) {
 
   parsedData.city = data.name;
   parsedData.temp.F = Math.round(data.main.temp);
-  // TODO - convert F to C
-  // parsedData.temp.C = Math.round(data.main.temp);
+  // why is this forcing another ()
+  parsedData.temp.C = Math.round(((parsedData.temp.F - 32) * 5) / 9);
 
   return parsedData;
 }
