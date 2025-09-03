@@ -17,10 +17,20 @@ function parseWeatherData(data) {
 
   parsedData.city = data.name;
   parsedData.temp.F = Math.round(data.main.temp);
-  // why is this forcing another ()
   parsedData.temp.C = Math.round(((parsedData.temp.F - 32) * 5) / 9);
 
+  parsedData.weatherCondition = data.weather[0].main.toLowerCase();
+  // parsedData.weatherCondition = "drizzle";
+
+  parsedData.isDay = isDay(data.sys, data.dt);
+
   return parsedData;
+}
+
+function isDay({ sunrise, sunset }, timeStamp) {
+  // const timeStampInSeconds = 1000 * timeStamp;
+  const current = timeStamp > 1e12 ? Math.floor(timeStamp / 1000) : timeStamp;
+  return sunrise < current && current < sunset;
 }
 
 // TODO - Write a getWeatherCondition() function that accepts a temperature in Fahrenheit and returns:
