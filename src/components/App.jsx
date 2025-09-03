@@ -31,16 +31,15 @@ function App() {
     setActiveModal("");
   }
 
-  // React.useEffect(() => {
-  //   function handleEscKeyDown(evt) {
-  //     if (evt.key === "Escape" || evt?.key === "Esc") {
-  //       setActiveModal("");
-  //     }
-  //     if (evt?.target?.classList?.contains("modal_is-opened")) {
-  //       setActiveModal("");
-  //     }
-  //   }
-  // });
+  useEffect(() => {
+    function handleEscKeyDown(evt) {
+      if (evt.key === "Escape" || evt?.key === "Esc") {
+        setActiveModal("");
+      }
+    }
+    document.addEventListener("keydown", handleEscKeyDown);
+    return () => document.removeEventListener("keydown", handleEscKeyDown);
+  }, []);
 
   function handleTempUnitChange() {
     if (currentTempUnit == "F") {
