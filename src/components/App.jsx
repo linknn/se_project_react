@@ -8,7 +8,7 @@ import ModalWithForm from "./ModalWithForm";
 
 import { defaultClothingItems } from "../utils/defaultClothingItems";
 import { getWeatherData } from "../utils/weatherApi";
-import CurrentTemperatureUnitContext from "./CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext";
 
 function App() {
   //Save as state (useState)

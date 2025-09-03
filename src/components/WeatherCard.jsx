@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import CurrentTemperatureUnitContext from "./CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext";
 
 import { weatherConditionImages } from "../utils/constants";
 

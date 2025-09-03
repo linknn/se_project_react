@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CurrentTemperatureUnitContext from "./CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext.js";
 
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
@@ -10,7 +10,6 @@ function Main({ clothingItems, handleOpenItemModal, weatherData }) {
   const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
   const weatherCondition = getWeatherCondition(weatherData.temp.F);
   const filteredCards = clothingItems.filter((item) => item.weather === weatherCondition);
-  console.log(weatherData);
 
   return (
     <main className="main">
