@@ -38,11 +38,14 @@ function isDay({ sunrise, sunset }, timeStamp) {
 // "hot" if it is at least 86 degrees
 // "warm" if it is at least 66 degrees, but less than 86
 // "cold" otherwise
-// should look something like this
-//  if (temperature >= 86) {
-//    return 'hot';
-//  } else if (temperature >= 66) {
-//    return 'warm';
-//  } else {
-//    return 'cold';
-//  }
+function getWeatherCondition(temperature) {
+  if (temperature >= 86) {
+    return "hot";
+  } else if (temperature >= 66) {
+    return "warm";
+  } else {
+    return "cold";
+  }
+}
+
+export default getWeatherCondition;

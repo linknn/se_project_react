@@ -4,8 +4,13 @@ import CurrentTemperatureUnitContext from "./CurrentTemperatureUnitContext";
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 
+import getWeatherCondition from "../utils/weatherApi.js";
+
 function Main({ clothingItems, handleOpenItemModal, weatherData }) {
   const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
+  const weatherCondition = getWeatherCondition(weatherData.temp.F);
+  const filteredCards = clothingItems.filter((item) => item.weather === weatherCondition);
+  console.log(weatherData);
 
   return (
     <main className="main">
@@ -14,7 +19,7 @@ function Main({ clothingItems, handleOpenItemModal, weatherData }) {
         Today is {weatherData.temp[currentTempUnit]}° {currentTempUnit} / You may want to wear:
       </p>
       <ul className="main__card-list">
-        {clothingItems.map((item) => {
+        {filteredCards.map((item) => {
           return <ItemCard key={item._id} data={item} onCardClick={handleOpenItemModal} />;
         })}
       </ul>
