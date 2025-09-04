@@ -1,16 +1,12 @@
 import closeIcon from "../images/light-close.png";
 import closeIconDark from "../images/dark_close.svg";
+import { handleOutsideModalClick } from "../utils/modalFunctions";
 
 function ItemModal({ card, isOpen, onClose }) {
-  const handleOutsideModalClick = (evt) => {
-    if (evt.target.classList.contains("modal")) {
-      onClose();
-    }
-  };
   return (
     <div
       className={`modal${isOpen ? " modal_is-opened" : ""}`}
-      onMouseDown={handleOutsideModalClick}
+      onMouseDown={(evt) => handleOutsideModalClick(evt, onClose)}
     >
       <div className="modal__container">
         <button type="button" className="modal__close-btn" onClick={onClose}>
