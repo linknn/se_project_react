@@ -67,6 +67,12 @@
     display: none;
   }
 
+  .header__side {
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+  }
+
   .header__menu-toggle {
     display: block;
     background: transparent;
