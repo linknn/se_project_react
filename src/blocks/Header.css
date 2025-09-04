@@ -34,3 +34,41 @@
   cursor: pointer;
   opacity: 50%;
 }
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+}
+
+.header__menu-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 630px) {
+  .header {
+    margin-bottom: 16px;
+  }
+
+  .header__side-desktop {
+    display: none;
+  }
+
+  .header__menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .header__menu-box {
+    margin: 16px;
+    padding: 16px;
+    background-color: red;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

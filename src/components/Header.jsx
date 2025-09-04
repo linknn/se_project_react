@@ -1,5 +1,9 @@
+import { useState } from "react";
+
 import logo from "../images/logo.png";
 import avatar from "../images/terrence.png";
+import menuIcon from "../images/mobile_nav_icon.png";
+import closeIcon from "../images/dark-close.png";
 
 import ToggleSwitch from "./ToggleSwitch";
 
@@ -9,6 +13,12 @@ function Header({ handleOpenClothesModal, weatherData }) {
     month: "long",
     day: "numeric",
   });
+
+  // for mobile nav
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header className="header">
@@ -21,7 +31,7 @@ function Header({ handleOpenClothesModal, weatherData }) {
           , {[weatherData.city]}
         </p>
       </div>
-      <div className="header__side">
+      <div className="header__side header__side-desktop">
         <ToggleSwitch />
         <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
           + Add clothes
@@ -29,6 +39,13 @@ function Header({ handleOpenClothesModal, weatherData }) {
         <p className="header__username">Terrence Tegegne</p>
         <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
       </div>
+      <button className="header__menu-toggle" onClick={toggleMenu}>
+        <img
+          src={isMenuOpen ? closeIcon : menuIcon}
+          alt={isMenuOpen ? "Close menu" : "Open menu"}
+          className="header__menu-icon"
+        />
+      </button>
     </header>
   );
 }
