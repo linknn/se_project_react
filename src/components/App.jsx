@@ -31,6 +31,7 @@ function App() {
     setActiveModal("");
   }
 
+  // esc key close modal
   useEffect(() => {
     function handleEscKeyDown(evt) {
       if (evt.key === "Escape" || evt?.key === "Esc") {

@@ -1,8 +1,16 @@
 import closeIcon from "../images/light-close.png";
 
 function ItemModal({ card, isOpen, onClose }) {
+  const handleOutsideModalClick = (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      onClose();
+    }
+  };
   return (
-    <div className={`modal${isOpen ? " modal_is-opened" : ""}`} onClick={onClose}>
+    <div
+      className={`modal${isOpen ? " modal_is-opened" : ""}`}
+      onMouseDown={handleOutsideModalClick}
+    >
       <div className="modal__container">
         <button type="button" className="modal__close-btn" onClick={onClose}>
           <img src={closeIcon} alt="x-icon" />
