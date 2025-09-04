@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import logo from "../images/logo.png";
 import avatar from "../images/terrence.png";
-import menuIcon from "../images/mobile_nav_icon.png";
-import closeIcon from "../images/dark-close.png";
+import menuIcon from "../images/new_hamburger.svg";
+import closeIcon from "../images/dark_close.svg";
 
 import ToggleSwitch from "./ToggleSwitch";
 
@@ -25,7 +25,7 @@ function Header({ handleOpenClothesModal, weatherData }) {
       <div className="header__side">
         <img src={logo} alt="WTWR logo" className="header__logo" />{" "}
         <p className="header__place">
-          <time className="header__dateime" dateTime={now}>
+          <time className="header__dateTime" dateTime={now}>
             {dateStr}
           </time>
           , {[weatherData.city]}
@@ -39,13 +39,26 @@ function Header({ handleOpenClothesModal, weatherData }) {
         <p className="header__username">Terrence Tegegne</p>
         <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
       </div>
+
       <button className="header__menu-toggle" onClick={toggleMenu}>
         <img
-          src={isMenuOpen ? closeIcon : menuIcon}
+          src={!isMenuOpen ? menuIcon : closeIcon}
           alt={isMenuOpen ? "Close menu" : "Open menu"}
-          className="header__menu-icon"
+          className={!isMenuOpen ? "header__menu_open" : "header__menu_close"}
         />
+        {/* {isMenuOpen ? <span className="menu__open"></span> : <span className="menu__close"></span>} */}
       </button>
+      {isMenuOpen && (
+        <div className="header__menu-box">
+          <div className="header__side">
+            <p className="header__username">Terrence Tegegne</p>
+            <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
+          </div>
+          <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
+            + Add clothes
+          </button>
+        </div>
+      )}
     </header>
   );
 }
