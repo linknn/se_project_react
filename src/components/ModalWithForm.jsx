@@ -1,3 +1,4 @@
+import closeIconDark from "../images/dark_close.svg";
 import closeIcon from "../images/dark-close.png";
 
 function ModalWithForm({ isOpen, children, handleSubmit, title, buttonText, onClose }) {

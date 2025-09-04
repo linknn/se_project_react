@@ -158,3 +158,28 @@
 .modal__submit-btn:hover {
   background: #00000099;
 }
+
+@media screen and (max-width: 630px) {
+  .modal {
+    padding: 0;
+  }
+
+  .modal__container_type_form {
+    top: 25%;
+    height: 455px;
+    padding: 32px 16px;
+    position: relative;
+  }
+
+  .modal__title {
+    font-size: 20px;
+  }
+  .modal__submit-btn {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .modal__close-btn_type_form {
+    display: block;
+  }
+}
