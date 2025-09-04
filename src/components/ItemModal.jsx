@@ -1,4 +1,5 @@
 import closeIcon from "../images/light-close.png";
+import closeIconDark from "../images/dark_close.svg";
 
 function ItemModal({ card, isOpen, onClose }) {
   const handleOutsideModalClick = (evt) => {
@@ -14,6 +15,9 @@ function ItemModal({ card, isOpen, onClose }) {
       <div className="modal__container">
         <button type="button" className="modal__close-btn" onClick={onClose}>
           <img src={closeIcon} alt="x-icon" />
+        </button>
+        <button type="button" className="modal__close-btn_dark" onClick={onClose}>
+          <img src={closeIconDark} alt="x-icon" />
         </button>
         <img src={card.link} alt={card.name} className="modal__image" />
         <div className="modal__footer">

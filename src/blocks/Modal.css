@@ -60,6 +60,36 @@
   padding-bottom: 12px;
 }
 
+.modal__close-btn_dark {
+  display: none;
+}
+
+@media screen and (max-width: 630px) {
+  .modal__image {
+    height: 343px;
+  }
+
+  .modal__close-btn {
+    display: none;
+  }
+
+  .modal__close-btn_dark {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    transition: opacity 0.5s;
+    padding: 8px;
+    display: block;
+  }
+
+  .modal__close-btn_dark:hover {
+    cursor: pointer;
+    opacity: 50%;
+  }
+}
+
 /* Form Modal */
 
 .modal__container_type_form {
