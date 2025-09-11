@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
+import Profile from "./Profile";
 import ItemModal from "./ItemModal";
 import ModalWithForm from "./ModalWithForm";
 
@@ -66,11 +68,16 @@ function App() {
     <CurrentTemperatureUnitContext.Provider value={{ currentTempUnit, handleTempUnitChange }}>
       <div className="app">
         <Header weatherData={weatherData} handleOpenClothesModal={handleOpenClothesModal} />
-        <Main
-          weatherData={weatherData}
-          clothingItems={clothingItems}
-          handleOpenItemModal={handleOpenItemModal}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={<Main />}
+            weatherData={weatherData}
+            clothingItems={clothingItems}
+            handleOpenItemModal={handleOpenItemModal}
+          />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
         <Footer />
         <ModalWithForm
           isOpen={activeModal === "add-clothes-modal"}
