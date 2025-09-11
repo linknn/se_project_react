@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../images/logo.png";
 import avatar from "../images/terrence.png";
@@ -20,30 +20,28 @@ function Header({
     day: "numeric",
   });
 
-  // // for mobile nav
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
-
   return (
     <header className="header">
       <div className="header__side">
-        <img src={logo} alt="WTWR logo" className="header__logo" />{" "}
-        <p className="header__place">
-          <time className="header__dateTime" dateTime={now}>
-            {dateStr}
-          </time>
-          , {[weatherData.city]}
-        </p>
+        <Link className="header__link" to="/">
+          <img src={logo} alt="WTWR logo" className="header__logo" />{" "}
+          <p className="header__place">
+            <time className="header__dateTime" dateTime={now}>
+              {dateStr}
+            </time>
+            , {[weatherData.city]}
+          </p>
+        </Link>
       </div>
       <div className="header__side header__side-desktop">
         <ToggleSwitch />
         <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
           + Add clothes
         </button>
-        <p className="header__username">Terrence Tegegne</p>
-        <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
+        <Link className="header__link" to="/profile">
+          <p className="header__username">Terrence Tegegne</p>
+          <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
+        </Link>
       </div>
 
       <button
@@ -55,7 +53,6 @@ function Header({
           alt={isOpen ? "Close menu" : "Open menu"}
           className={!isOpen ? "header__menu_open" : "header__menu_close"}
         />
-        {/* {isMenuOpen ? <span className="menu__open"></span> : <span className="menu__close"></span>} */}
       </button>
       {isOpen && (
         <div className="header__menu-box">
