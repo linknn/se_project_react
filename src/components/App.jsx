@@ -29,6 +29,10 @@ function App() {
     setActiveModal("add-clothes-modal");
   }
 
+  function handleMobileOpenMenu() {
+    setActiveModal("mobile-nav-modal");
+  }
+
   function handleCloseModal() {
     setActiveModal("");
   }
@@ -67,14 +71,23 @@ function App() {
   return (
     <CurrentTemperatureUnitContext.Provider value={{ currentTempUnit, handleTempUnitChange }}>
       <div className="app">
-        <Header weatherData={weatherData} handleOpenClothesModal={handleOpenClothesModal} />
+        <Header
+          weatherData={weatherData}
+          handleOpenClothesModal={handleOpenClothesModal}
+          isOpen={activeModal === "mobile-nav-modal"}
+          handleMobileOpenMenu={handleMobileOpenMenu}
+          handleCloseModal={handleCloseModal}
+        />
         <Routes>
           <Route
             path="/"
-            element={<Main />}
-            weatherData={weatherData}
-            clothingItems={clothingItems}
-            handleOpenItemModal={handleOpenItemModal}
+            element={
+              <Main
+                weatherData={weatherData}
+                clothingItems={clothingItems}
+                handleOpenItemModal={handleOpenItemModal}
+              />
+            }
           />
           <Route path="/profile" element={<Profile />} />
         </Routes>

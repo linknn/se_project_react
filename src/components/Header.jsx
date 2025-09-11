@@ -7,18 +7,24 @@ import closeIcon from "../images/dark_close.svg";
 
 import ToggleSwitch from "./ToggleSwitch";
 
-function Header({ handleOpenClothesModal, weatherData }) {
+function Header({
+  handleOpenClothesModal,
+  weatherData,
+  isOpen,
+  handleMobileOpenMenu,
+  handleCloseModal,
+}) {
   const now = new Date();
   const dateStr = now.toLocaleDateString("default", {
     month: "long",
     day: "numeric",
   });
 
-  // for mobile nav
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // // for mobile nav
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const toggleMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen);
+  // };
 
   return (
     <header className="header">
@@ -40,15 +46,18 @@ function Header({ handleOpenClothesModal, weatherData }) {
         <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
       </div>
 
-      <button className="header__menu-toggle" onClick={toggleMenu}>
+      <button
+        className={`header__menu-toggle ${isOpen && "header__menu-toggle_close"}`}
+        onClick={isOpen ? handleCloseModal : handleMobileOpenMenu}
+      >
         <img
-          src={!isMenuOpen ? menuIcon : closeIcon}
-          alt={isMenuOpen ? "Close menu" : "Open menu"}
-          className={!isMenuOpen ? "header__menu_open" : "header__menu_close"}
+          src={!isOpen ? menuIcon : closeIcon}
+          alt={isOpen ? "Close menu" : "Open menu"}
+          className={!isOpen ? "header__menu_open" : "header__menu_close"}
         />
         {/* {isMenuOpen ? <span className="menu__open"></span> : <span className="menu__close"></span>} */}
       </button>
-      {isMenuOpen && (
+      {isOpen && (
         <div className="header__menu-box">
           <div className="header__side">
             <p className="header__username">Terrence Tegegne</p>
