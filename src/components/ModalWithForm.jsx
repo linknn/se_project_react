@@ -1,4 +1,3 @@
-import closeIconDark from "../images/dark_close.svg";
 import closeIcon from "../images/dark-close.png";
 import { handleOutsideModalClick } from "../utils/modalFunctions";
 
