@@ -10,6 +10,16 @@
   justify-content: center;
 }
 
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  justify-content: center;
+}
+
 .card__title {
   position: absolute;
   top: 15px;
@@ -39,5 +49,9 @@
 
   .card__title {
     top: 7px;
+  }
+
+  .card-list {
+    gap: 15px;
   }
 }
