@@ -22,7 +22,7 @@ function Header({
 
   return (
     <header className="header">
-      <div className="header__side">
+      <div className="header__side header__side-left">
         <Link className="header__link" to="/">
           <img src={logo} alt="WTWR logo" className="header__logo" />{" "}
           <p className="header__place">

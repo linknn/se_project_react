@@ -31,7 +31,13 @@
   transition: opacity 0.5s;
 }
 
-.header__add-clothes-btn:hover {
+.header__link,
+.header__side-desktop {
+  transition: opacity 0.5s;
+}
+
+.header__add-clothes-btn:hover,
+.header__link:hover {
   cursor: pointer;
   opacity: 50%;
 }
