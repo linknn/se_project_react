@@ -1,4 +1,4 @@
-.main__card-list {
+.card-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 630px) {
-  .main__card-list {
+  .card-list {
     gap: 15px;
   }
 }

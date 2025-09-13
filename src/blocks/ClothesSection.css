@@ -1,0 +1,19 @@
+.clothes-section__row {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.clothes-section__btn {
+  margin: 0 20px 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  transition: opacity 0.5s;
+  color: #00000099;
+}
+
+.clothes-section__btn:hover {
+  cursor: pointer;
+  opacity: 50%;
+}

@@ -17,7 +17,7 @@ function Main({ clothingItems, handleOpenItemModal, weatherData }) {
       <p className="main__text">
         Today is {weatherData.temp[currentTempUnit]}° {currentTempUnit} / You may want to wear:
       </p>
-      <ul className="main__card-list">
+      <ul className="card-list">
         {filteredCards.map((item) => {
           return <ItemCard key={item._id} data={item} onCardClick={handleOpenItemModal} />;
         })}

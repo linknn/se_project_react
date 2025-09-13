@@ -1,11 +1,11 @@
 import Sidebar from "./Sidebar";
 import ClothesSection from "./ClothesSection";
 
-function Profile() {
+function Profile({ clothingItems }) {
   return (
     <div className="profile">
       <Sidebar />
-      <ClothesSection />
+      <ClothesSection clothingItems={clothingItems} />
     </div>
   );
 }
