@@ -6,7 +6,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 import Profile from "./Profile";
 import ItemModal from "./ItemModal";
-import ModalWithForm from "./ModalWithForm";
+import AddItemModal from "./AddItemModal";
 
 import { defaultClothingItems } from "../utils/defaultClothingItems";
 import { getWeatherData } from "../utils/weatherApi";
@@ -101,7 +101,8 @@ function App() {
           />
         </Routes>
         <Footer />
-        <ModalWithForm
+        <AddItemModal />
+        {/* <ModalWithForm
           isOpen={activeModal === "add-clothes-modal"}
           title="New garment"
           buttonText="Add garment"
@@ -165,7 +166,7 @@ function App() {
               </label>
             </div>
           </fieldset>
-        </ModalWithForm>
+        </ModalWithForm> */}
         <ItemModal
           card={selectedCard}
           isOpen={activeModal === "item-modal"}
