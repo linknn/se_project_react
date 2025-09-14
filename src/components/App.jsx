@@ -56,6 +56,11 @@ function App() {
     }
   }
 
+  function handleAddItemSubmit(inputValues) {
+    console.log(inputValues);
+    setClothingItems([inputValues, ...clothingItems]);
+  }
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -101,7 +106,12 @@ function App() {
           />
         </Routes>
         <Footer />
-        <AddItemModal isOpen={activeModal === "add-clothes-modal"} onClose={handleCloseModal} />
+        <AddItemModal
+          isOpen={activeModal === "add-clothes-modal"}
+          onClose={handleCloseModal}
+          handleAddItemSubmit={handleAddItemSubmit}
+          // handleReset={handleReset}
+        />
         <ItemModal
           card={selectedCard}
           isOpen={activeModal === "item-modal"}
