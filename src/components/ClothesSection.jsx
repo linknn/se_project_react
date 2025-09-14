@@ -1,11 +1,13 @@
 import ItemCard from "./ItemCard";
 
-function ClothesSection({ clothingItems, handleOpenItemModal }) {
+function ClothesSection({ clothingItems, handleOpenClothesModal, handleOpenItemModal }) {
   return (
     <section className="clothes-section">
       <div className="clothes-section__row">
         Your items
-        <button className="clothes-section__btn">+ Add New</button>
+        <button onClick={handleOpenClothesModal} className="clothes-section__btn">
+          + Add New
+        </button>
       </div>
       <ul className="card-list">
         {clothingItems.map((item) => {

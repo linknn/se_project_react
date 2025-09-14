@@ -89,7 +89,16 @@ function App() {
               />
             }
           />
-          <Route path="/profile" element={<Profile clothingItems={clothingItems} />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                clothingItems={clothingItems}
+                handleOpenClothesModal={handleOpenClothesModal}
+                handleOpenItemModal={handleOpenItemModal}
+              />
+            }
+          />
         </Routes>
         <Footer />
         <ModalWithForm

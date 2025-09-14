@@ -1,11 +1,16 @@
 import Sidebar from "./Sidebar";
 import ClothesSection from "./ClothesSection";
 
-function Profile({ clothingItems }) {
+function Profile({ clothingItems, handleOpenClothesModal, handleOpenItemModal }) {
   return (
     <div className="profile">
       <Sidebar />
-      <ClothesSection clothingItems={clothingItems} />
+
+      <ClothesSection
+        clothingItems={clothingItems}
+        handleOpenClothesModal={handleOpenClothesModal}
+        handleOpenItemModal={handleOpenItemModal}
+      />
     </div>
   );
 }
