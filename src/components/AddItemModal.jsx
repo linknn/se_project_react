@@ -1,13 +1,13 @@
 import ModalWithForm from "./ModalWithForm";
 
-function AddItemModal({ activeModal, handleCloseModal }) {
+function AddItemModal({ isOpen, onClose }) {
   return (
     <ModalWithForm
-      isOpen={activeModal === "add-clothes-modal"}
+      isOpen={isOpen}
       title="New garment"
       buttonText="Add garment"
       name="add-clothes-form"
-      onClose={handleCloseModal}
+      onClose={onClose}
     >
       <fieldset className="modal__fieldset">
         <label htmlFor="add-clothes-name" className="modal__label">
