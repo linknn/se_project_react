@@ -76,6 +76,11 @@ function App() {
         );
       })
       .catch(console.error);
+    // .finally(() => {
+    //   setTimeout(() => {
+    //     setButtonText(submitBtn, false, "Delete", "Deleting...");
+    //   }, 300);
+    // });
   }
 
   useEffect(() => {
