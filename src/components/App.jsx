@@ -8,8 +8,9 @@ import Profile from "./Profile";
 import ItemModal from "./ItemModal";
 import AddItemModal from "./AddItemModal";
 
-import { defaultClothingItems } from "../utils/defaultClothingItems";
+// import { defaultClothingItems } from "../utils/defaultClothingItems";
 import { getWeatherData } from "../utils/weatherApi";
+import { getItems } from "../utils/api";
 import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext";
 
 function App() {
@@ -56,9 +57,10 @@ function App() {
     }
   }
 
-  function handleAddItemSubmit(inputValues) {
+  function handleAddItemSubmit(inputValues, handleReset) {
     console.log(inputValues);
     setClothingItems([inputValues, ...clothingItems]);
+    handleReset();
   }
 
   useEffect(() => {
@@ -70,7 +72,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setClothingItems(defaultClothingItems);
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch(console.error);
   }, []);
 
   return (
