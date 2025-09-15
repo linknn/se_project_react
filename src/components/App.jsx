@@ -10,7 +10,7 @@ import AddItemModal from "./AddItemModal";
 
 // import { defaultClothingItems } from "../utils/defaultClothingItems";
 import { getWeatherData } from "../utils/weatherApi";
-import { addItem, getItems } from "../utils/api";
+import { addItem, getItems, deleteItem } from "../utils/api";
 import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext";
 
 function App() {
@@ -67,6 +67,17 @@ function App() {
     handleReset();
   }
 
+  function handleDeleteItem() {
+    console.log(selectedCard);
+    deleteItem(selectedCard._id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter((clothingItem) => clothingItem._id !== selectedCard._id)
+        );
+      })
+      .catch(console.error);
+  }
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -78,8 +89,6 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
-        // TODO - new items first
-
         setClothingItems(items.reverse());
       })
       .catch(console.error);
@@ -127,6 +136,7 @@ function App() {
         <ItemModal
           card={selectedCard}
           isOpen={activeModal === "item-modal"}
+          handleDeleteItem={handleDeleteItem}
           onClose={handleCloseModal}
         />
       </div>

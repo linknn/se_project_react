@@ -2,7 +2,12 @@ import closeIcon from "../images/light-close.png";
 import closeIconDark from "../images/dark_close.svg";
 import { handleOutsideModalClick } from "../utils/modalFunctions";
 
-function ItemModal({ card, isOpen, onClose }) {
+function ItemModal({ card, isOpen, onClose, handleDeleteItem }) {
+  function handleDelete() {
+    handleDeleteItem(card);
+    onClose();
+  }
+
   return (
     <div
       className={`modal${isOpen ? " modal_is-opened" : ""}`}
@@ -19,6 +24,9 @@ function ItemModal({ card, isOpen, onClose }) {
         <div className="modal__footer">
           <h2 className="modal__text">{card.name}</h2>
           <p className="modal__text">Weather: {card.weather}</p>
+          <button onClick={handleDelete} className="modal__delete-btn">
+            Delete item
+          </button>
         </div>
       </div>
     </div>
