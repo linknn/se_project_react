@@ -10,7 +10,7 @@ import AddItemModal from "./AddItemModal";
 
 // import { defaultClothingItems } from "../utils/defaultClothingItems";
 import { getWeatherData } from "../utils/weatherApi";
-import { getItems } from "../utils/api";
+import { addItem, getItems } from "../utils/api";
 import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext";
 
 function App() {
@@ -59,7 +59,11 @@ function App() {
 
   function handleAddItemSubmit(inputValues, handleReset) {
     console.log(inputValues);
-    setClothingItems([inputValues, ...clothingItems]);
+    addItem(inputValues)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+      })
+      .catch(console.error);
     handleReset();
   }
 
@@ -74,7 +78,9 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
-        setClothingItems(items);
+        // TODO - new items first
+
+        setClothingItems(items.reverse());
       })
       .catch(console.error);
   }, []);
