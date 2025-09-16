@@ -1,12 +1,20 @@
 import { useForm } from "../hooks/useForm";
 import ModalWithForm from "./ModalWithForm";
+import { useState } from "react";
 
 function AddItemModal({ isOpen, onClose, handleAddItemSubmit }) {
   const { values, handleChange, handleReset } = useForm({ name: "", weather: "hot", imageUrl: "" });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleAddItemSubmit(values, handleReset);
+    setIsLoading(true);
+    handleAddItemSubmit(values, handleReset).finally(() => {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    });
     onClose();
   };
 
@@ -14,7 +22,7 @@ function AddItemModal({ isOpen, onClose, handleAddItemSubmit }) {
     <ModalWithForm
       isOpen={isOpen}
       title="New garment"
-      buttonText="Add garment"
+      buttonText={isLoading ? "Adding..." : "Add garment"}
       name="add-clothes-form"
       handleSubmit={handleSubmit}
       onClose={onClose}

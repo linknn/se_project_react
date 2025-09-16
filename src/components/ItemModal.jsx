@@ -1,10 +1,17 @@
 import closeIcon from "../images/light-close.png";
 import closeIconDark from "../images/dark_close.svg";
 import { handleOutsideModalClick } from "../utils/modalFunctions";
+import { useState } from "react";
 
 function ItemModal({ card, isOpen, onClose, handleDeleteItem }) {
+  const [isLoading, setIsLoading] = useState(false);
   function handleDelete() {
-    handleDeleteItem(card);
+    setIsLoading(true);
+    handleDeleteItem(card).finally(() => {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    });
     onClose();
   }
 
@@ -25,7 +32,7 @@ function ItemModal({ card, isOpen, onClose, handleDeleteItem }) {
           <h2 className="modal__text">{card.name}</h2>
           <p className="modal__text">Weather: {card.weather}</p>
           <button onClick={handleDelete} className="modal__delete-btn">
-            Delete item
+            {isLoading ? "Deleting..." : "Delete Item"}
           </button>
         </div>
       </div>

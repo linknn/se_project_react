@@ -59,28 +59,23 @@ function App() {
 
   function handleAddItemSubmit(inputValues, handleReset) {
     console.log(inputValues);
-    addItem(inputValues)
+    return addItem(inputValues)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
+        handleReset();
       })
       .catch(console.error);
-    handleReset();
   }
 
   function handleDeleteItem() {
     console.log(selectedCard);
-    deleteItem(selectedCard._id)
+    return deleteItem(selectedCard._id)
       .then(() => {
         setClothingItems(
           clothingItems.filter((clothingItem) => clothingItem._id !== selectedCard._id)
         );
       })
       .catch(console.error);
-    // .finally(() => {
-    //   setTimeout(() => {
-    //     setButtonText(submitBtn, false, "Delete", "Deleting...");
-    //   }, 300);
-    // });
   }
 
   useEffect(() => {
