@@ -29,8 +29,10 @@ function ItemModal({ card, isOpen, onClose, handleDeleteItem }) {
         </button>
         <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
-          <h2 className="modal__text">{card.name}</h2>
-          <p className="modal__text">Weather: {card.weather}</p>
+          <div className="modal__text">
+            <h2 className="modal__text-desc">{card.name}</h2>
+            <p className="modal__text-desc">Weather: {card.weather}</p>
+          </div>
           <button onClick={handleDelete} className="modal__delete-btn">
             {isLoading ? "Deleting..." : "Delete Item"}
           </button>

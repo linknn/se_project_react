@@ -52,10 +52,13 @@
 
 .modal__footer {
   background: #ffffff;
-  padding: 20px 0 20px 32px;
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.modal__text {
+.modal__text-desc {
   font-size: 20px;
   color: #000000;
   margin: 0;
@@ -64,6 +67,21 @@
 
 .modal__close-btn_dark {
   display: none;
+}
+
+.modal__delete-btn {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  color: #ff4d00;
+  background: transparent;
+  transition: opacity 0.5s;
+  border: none;
+}
+
+.modal__delete-btn:hover {
+  cursor: pointer;
+  opacity: 50%;
 }
 
 @media screen and (max-width: 630px) {
