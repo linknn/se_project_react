@@ -39,4 +39,4 @@ function deleteItem(cardId) {
   });
 }
 
-export { getItems, addItem, deleteItem };
+export { getItems, addItem, deleteItem, baseUrl };
