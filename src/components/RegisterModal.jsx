@@ -24,34 +24,8 @@ function RegisterModal({ isOpen, onClose, onRegister, handleCloseModal }) {
       handleSubmit={handleSubmit}
       handleCloseModal={handleCloseModal}
     >
-      <label htmlFor="name" className="modal__label">
-        Name
-        <input
-          type="text"
-          className="modal__input"
-          placeholder="Name"
-          id="name"
-          name="name"
-          value={values.name}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label htmlFor="avatar" className="modal__label">
-        Avatar
-        <input
-          type="url"
-          className="modal__input"
-          placeholder="Avatar"
-          id="avatar"
-          name="avatar"
-          value={values.avatar}
-          onChange={handleChange}
-          required
-        />
-      </label>
       <label htmlFor="email" className="modal__label">
-        Email
+        Email*
         <input
           type="email"
           className="modal__input"
@@ -64,7 +38,7 @@ function RegisterModal({ isOpen, onClose, onRegister, handleCloseModal }) {
         />
       </label>
       <label htmlFor="password" className="modal__label">
-        Password
+        Password*
         <input
           type="password"
           className="modal__input"
@@ -72,6 +46,32 @@ function RegisterModal({ isOpen, onClose, onRegister, handleCloseModal }) {
           id="password"
           name="password"
           value={values.password}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <label htmlFor="name" className="modal__label">
+        Name*
+        <input
+          type="text"
+          className="modal__input"
+          placeholder="Name"
+          id="name"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <label htmlFor="avatar" className="modal__label">
+        Avatar URL*
+        <input
+          type="url"
+          className="modal__input"
+          placeholder="Avatar URL"
+          id="avatar"
+          name="avatar"
+          value={values.avatar}
           onChange={handleChange}
           required
         />
