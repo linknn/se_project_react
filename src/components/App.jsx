@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import ItemModal from "./ItemModal";
 import AddItemModal from "./AddItemModal";
 import RegisterModal from "./RegisterModal";
+import LoginModal from "./LoginModal";
 
 import { signup, signin, getUser } from "../utils/auth";
 
@@ -36,6 +37,10 @@ function App() {
 
   function handleOpenRegisterModal() {
     setActiveModal("register-modal");
+  }
+
+  function handleOpenLoginModal() {
+    setActiveModal("login-modal");
   }
 
   function handleMobileOpenMenu() {
@@ -107,6 +112,15 @@ function App() {
       });
   }
 
+  function handleLoginSubmit({ email, password }) {
+    signin({ email, password })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        handleCloseModal();
+      })
+      .catch(console.error);
+  }
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -149,6 +163,7 @@ function App() {
           weatherData={weatherData}
           handleOpenClothesModal={handleOpenClothesModal}
           handleOpenRegisterModal={handleOpenRegisterModal}
+          handleOpenLoginModal={handleOpenLoginModal}
           isOpen={activeModal === "mobile-nav-modal"}
           handleMobileOpenMenu={handleMobileOpenMenu}
           handleCloseModal={handleCloseModal}
@@ -176,6 +191,11 @@ function App() {
           />
         </Routes>
         <Footer />
+        <LoginModal
+          isOpen={activeModal === "login-modal"}
+          onClose={handleCloseModal}
+          onLogin={handleLoginSubmit}
+        />
         <RegisterModal
           isOpen={activeModal === "register-modal"}
           onClose={handleCloseModal}

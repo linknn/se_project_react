@@ -10,6 +10,7 @@ import ToggleSwitch from "./ToggleSwitch";
 function Header({
   handleOpenClothesModal,
   handleOpenRegisterModal,
+  handleOpenLoginModal,
   weatherData,
   isOpen,
   handleMobileOpenMenu,
@@ -68,6 +69,9 @@ function Header({
       )}
       <button type="button" className="header__auth-button" onClick={handleOpenRegisterModal}>
         Sign Up
+      </button>
+      <button type="button" onClick={handleOpenLoginModal}>
+        Sign In
       </button>
     </header>
   );
