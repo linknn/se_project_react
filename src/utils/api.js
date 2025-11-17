@@ -4,14 +4,7 @@
 const baseUrl = "http://localhost:3001";
 
 function getItems() {
-  const token = localStorage.getItem("jwt");
-
-  return fetch(`${baseUrl}/items`, {
-    headers: {
-      authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
+  return fetch(`${baseUrl}/items`).then((res) => {
     return res.ok ? res.json() : Promise.reject(`Error fetching items: ${res.status}`);
   });
 }
