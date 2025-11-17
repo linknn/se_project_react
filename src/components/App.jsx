@@ -10,6 +10,8 @@ import AddItemModal from "./AddItemModal";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 
+import ProtectedRoute from "./ProtectedRoute";
+
 import { signup, signin, getUser } from "../utils/auth";
 
 import { getWeatherData } from "../utils/weatherApi";
@@ -190,11 +192,13 @@ function App() {
           <Route
             path="/profile"
             element={
-              <Profile
-                clothingItems={clothingItems}
-                handleOpenClothesModal={handleOpenClothesModal}
-                handleOpenItemModal={handleOpenItemModal}
-              />
+              <ProtectedRoute loggedIn={loggedIn}>
+                <Profile
+                  clothingItems={clothingItems}
+                  handleOpenClothesModal={handleOpenClothesModal}
+                  handleOpenItemModal={handleOpenItemModal}
+                />
+              </ProtectedRoute>
             }
           />
         </Routes>
