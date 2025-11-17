@@ -9,7 +9,7 @@ import ItemModal from "./ItemModal";
 import AddItemModal from "./AddItemModal";
 import RegisterModal from "./RegisterModal";
 
-import { signup, signin } from "../utils/auth";
+import { signup, signin, getUser } from "../utils/auth";
 
 import { getWeatherData } from "../utils/weatherApi";
 import { addItem, getItems, deleteItem } from "../utils/api";
@@ -67,7 +67,9 @@ function App() {
 
   function handleAddItemSubmit(inputValues, handleReset) {
     console.log(inputValues);
-    return addItem(inputValues)
+    const token = localStorage.getItem("jwt");
+
+    return addItem(inputValues, token)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         handleReset();
@@ -77,7 +79,9 @@ function App() {
 
   function handleDeleteItem() {
     console.log(selectedCard);
-    return deleteItem(selectedCard._id)
+    const token = localStorage.getItem("jwt");
+
+    return deleteItem(selectedCard._id, token)
       .then(() => {
         setClothingItems(
           clothingItems.filter((clothingItem) => clothingItem._id !== selectedCard._id)
@@ -123,19 +127,19 @@ function App() {
     const token = localStorage.getItem("jwt");
 
     if (!token) return;
-     {
-      validateToken(token)
-        .then((user) => {
-          setCurrentUser(user);
-          setIsLoggedIn(true);
-        })
-        
-        .catch((err) => {
-          console.error("Invalid token:", err);
-          localStorage.removeItem("jwt");
-          setLoggedIn(false);
-          setCurrentUser(null);
-        });
+
+    getUser(token)
+      .then((user) => {
+        setCurrentUser(user);
+        setLoggedIn(true);
+      })
+
+      .catch((err) => {
+        console.error("Invalid token:", err);
+        localStorage.removeItem("jwt");
+        setLoggedIn(false);
+        setCurrentUser(null);
+      });
   }, []);
 
   return (
