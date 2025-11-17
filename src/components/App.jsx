@@ -7,8 +7,10 @@ import Footer from "./Footer";
 import Profile from "./Profile";
 import ItemModal from "./ItemModal";
 import AddItemModal from "./AddItemModal";
+import RegisterModal from "./RegisterModal";
 
-// import { defaultClothingItems } from "../utils/defaultClothingItems";
+import { signup, signin } from "../utils/auth";
+
 import { getWeatherData } from "../utils/weatherApi";
 import { addItem, getItems, deleteItem } from "../utils/api";
 import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext";
@@ -28,6 +30,10 @@ function App() {
 
   function handleOpenClothesModal() {
     setActiveModal("add-clothes-modal");
+  }
+
+  function handleOpenRegisterModal() {
+    setActiveModal("register-modal");
   }
 
   function handleMobileOpenMenu() {
@@ -78,6 +84,23 @@ function App() {
       .catch(console.error);
   }
 
+  function handleRegisterSubmit(formValues) {
+    signup(formValues)
+      .then(() => {
+        // successful signup/auto-login
+        return signin({ email: formValues.email, password: formValues.password });
+      })
+      .then((res) => {
+        // save token
+        localStorage.setItem("jwt", res.token);
+
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error("Registration error:", err);
+      });
+  }
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -100,6 +123,7 @@ function App() {
         <Header
           weatherData={weatherData}
           handleOpenClothesModal={handleOpenClothesModal}
+          handleOpenRegisterModal={handleOpenRegisterModal}
           isOpen={activeModal === "mobile-nav-modal"}
           handleMobileOpenMenu={handleMobileOpenMenu}
           handleCloseModal={handleCloseModal}
@@ -127,6 +151,11 @@ function App() {
           />
         </Routes>
         <Footer />
+        <RegisterModal
+          isOpen={activeModal === "register-modal"}
+          onClose={handleCloseModal}
+          onRegister={handleRegisterSubmit}
+        />
         <AddItemModal
           isOpen={activeModal === "add-clothes-modal"}
           onClose={handleCloseModal}
