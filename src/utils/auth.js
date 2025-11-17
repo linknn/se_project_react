@@ -1,4 +1,4 @@
-import { baseUrl } from "./constants";
+import { baseUrl } from "./api";
 
 function handleResponse(res) {
   if (!res.ok) {
