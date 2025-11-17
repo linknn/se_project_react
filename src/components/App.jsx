@@ -116,9 +116,17 @@ function App() {
     signin({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
+
+        return getUser(res.token);
+      })
+      .then((userData) => {
+        setLoggedIn(true);
+        setCurrentUser(userData);
         handleCloseModal();
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Login error:", err);
+      });
   }
 
   useEffect(() => {
