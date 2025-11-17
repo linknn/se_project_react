@@ -22,6 +22,8 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherData, setWeatherData] = useState({ name: "", temp: "0" });
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   function handleOpenItemModal(card) {
     setActiveModal("item-modal");
@@ -115,6 +117,25 @@ function App() {
         setClothingItems(data.reverse());
       })
       .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (!token) return;
+     {
+      validateToken(token)
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        })
+        
+        .catch((err) => {
+          console.error("Invalid token:", err);
+          localStorage.removeItem("jwt");
+          setLoggedIn(false);
+          setCurrentUser(null);
+        });
   }, []);
 
   return (
