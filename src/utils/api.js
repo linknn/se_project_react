@@ -8,7 +8,7 @@ function getItems() {
 
   return fetch(`${baseUrl}/items`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   }).then((res) => {
@@ -16,10 +16,11 @@ function getItems() {
   });
 }
 
-function addItem({ name, imageUrl, weather }) {
+function addItem({ name, imageUrl, weather }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
+      authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, imageUrl, weather }),
@@ -28,10 +29,11 @@ function addItem({ name, imageUrl, weather }) {
   });
 }
 
-function deleteItem(cardId) {
+function deleteItem(cardId, token) {
   return fetch(`${baseUrl}/items/${cardId}`, {
     method: "DELETE",
     headers: {
+      authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   }).then((res) => {
