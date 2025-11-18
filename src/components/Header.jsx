@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 import logo from "../images/logo.png";
 // import avatar from "../images/terrence.png";
@@ -6,6 +7,7 @@ import menuIcon from "../images/new_hamburger.svg";
 import closeIcon from "../images/dark_close.svg";
 
 import ToggleSwitch from "./ToggleSwitch";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Header({
   handleOpenClothesModal,
@@ -16,13 +18,19 @@ function Header({
   handleMobileOpenMenu,
   handleCloseModal,
   loggedIn,
-  currentUser,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
   const now = new Date();
   const dateStr = now.toLocaleDateString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const userAvatarInitial = () => {
+    const name = currentUser?.name || "";
+    return name ? name[0].toUpperCase() : "";
+  };
 
   return (
     <header className="header">
@@ -48,7 +56,11 @@ function Header({
             </button>
             <Link className="header__link" to="/profile">
               <p className="header__username">{currentUser?.name}</p>
-              <img src={currentUser?.avatar} alt="User avatar" className="header__avatar" />
+              {currentUser?.avatar ? (
+                <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+              ) : (
+                <div className="header__avatar header__avatar_initial">{userAvatarInitial()}</div>
+              )}
             </Link>
           </>
         ) : (
@@ -80,7 +92,11 @@ function Header({
             <>
               <div className="header__side">
                 <p className="header__username">{currentUser?.name}</p>
-                <img src={currentUser?.avatar} alt="User avatar" className="header__avatar" />
+                {currentUser?.avatar ? (
+                  <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+                ) : (
+                  <div className="header__avatar header__avatar_initial">{userAvatarInitial()}</div>
+                )}
               </div>
               <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
                 + Add clothes
