@@ -177,6 +177,8 @@ function App() {
           isOpen={activeModal === "mobile-nav-modal"}
           handleMobileOpenMenu={handleMobileOpenMenu}
           handleCloseModal={handleCloseModal}
+          loggedIn={loggedIn}
+          currentUser={currentUser}
         />
         <Routes>
           <Route
