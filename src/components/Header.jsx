@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import logo from "../images/logo.png";
 // import avatar from "../images/terrence.png";
@@ -20,6 +20,7 @@ function Header({
   loggedIn,
 }) {
   const currentUser = useContext(CurrentUserContext);
+  const [avatarError, setAvatarError] = useState(false);
 
   const now = new Date();
   const dateStr = now.toLocaleDateString("default", {
@@ -56,8 +57,14 @@ function Header({
             </button>
             <Link className="header__link" to="/profile">
               <p className="header__username">{currentUser?.name}</p>
-              {currentUser?.avatar ? (
-                <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+
+              {!avatarError && currentUser?.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  alt="User avatar"
+                  className="header__avatar"
+                  onError={() => setAvatarError(true)}
+                />
               ) : (
                 <div className="header__avatar header__avatar_initial">{userAvatarInitial()}</div>
               )}
@@ -92,8 +99,14 @@ function Header({
             <>
               <div className="header__side">
                 <p className="header__username">{currentUser?.name}</p>
-                {currentUser?.avatar ? (
-                  <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+
+                {!avatarError && currentUser?.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt="User avatar"
+                    className="header__avatar"
+                    onError={() => setAvatarError(true)}
+                  />
                 ) : (
                   <div className="header__avatar header__avatar_initial">{userAvatarInitial()}</div>
                 )}
