@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import logo from "../images/logo.png";
-import avatar from "../images/terrence.png";
+// import avatar from "../images/terrence.png";
 import menuIcon from "../images/new_hamburger.svg";
 import closeIcon from "../images/dark_close.svg";
 
@@ -15,6 +15,8 @@ function Header({
   isOpen,
   handleMobileOpenMenu,
   handleCloseModal,
+  loggedIn,
+  currentUser,
 }) {
   const now = new Date();
   const dateStr = now.toLocaleDateString("default", {
@@ -35,15 +37,30 @@ function Header({
           </p>
         </Link>
       </div>
+
       <div className="header__side header__side-desktop">
         <ToggleSwitch />
-        <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
-          + Add clothes
-        </button>
-        <Link className="header__link" to="/profile">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
-        </Link>
+
+        {loggedIn ? (
+          <>
+            <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
+              + Add clothes
+            </button>
+            <Link className="header__link" to="/profile">
+              <p className="header__username">{currentUser.name}</p>
+              <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+            </Link>
+          </>
+        ) : (
+          <>
+            <button type="button" className="header__auth-button" onClick={handleOpenRegisterModal}>
+              Sign Up
+            </button>
+            <button type="button" className="header__auth-button" onClick={handleOpenLoginModal}>
+              Sign In
+            </button>
+          </>
+        )}
       </div>
 
       <button
@@ -56,23 +73,35 @@ function Header({
           className={!isOpen ? "header__menu_open" : "header__menu_close"}
         />
       </button>
+
       {isOpen && (
         <div className="header__menu-box">
-          <div className="header__side">
-            <p className="header__username">Terrence Tegegne</p>
-            <img src={avatar} alt="Terrence Tegegne avatar" className="header__avatar" />
-          </div>
-          <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
-            + Add clothes
-          </button>
+          {loggedIn ? (
+            <>
+              <div className="header__side">
+                <p className="header__username">{currentUser.name}</p>
+                <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+              </div>
+              <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
+                + Add clothes
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="header__auth-button"
+                onClick={handleOpenRegisterModal}
+              >
+                Sign Up
+              </button>
+              <button type="button" onClick={handleOpenLoginModal}>
+                Sign In
+              </button>
+            </>
+          )}
         </div>
       )}
-      <button type="button" className="header__auth-button" onClick={handleOpenRegisterModal}>
-        Sign Up
-      </button>
-      <button type="button" onClick={handleOpenLoginModal}>
-        Sign In
-      </button>
     </header>
   );
 }
