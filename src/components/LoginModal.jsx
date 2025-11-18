@@ -15,7 +15,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
   return (
     <ModalWithForm
       title="Sign In"
-      buttonText="SignIn"
+      buttonText="Sign In"
       isOpen={isOpen}
       onClose={onClose}
       handleSubmit={handleSubmit}

@@ -1,11 +1,13 @@
-import avatar from "../images/terrence.png";
-
-function Sidebar() {
+function Sidebar({ currentUser }) {
   return (
     <aside className="sidebar">
       <div className="sidebar__user-info">
-        <img src={avatar} alt="Terrence Tegegne avater" className="sidebar__avatar" />
-        <p className="sidebar__username">Terrence Tegegne</p>
+        <img
+          src={currentUser?.avatar}
+          alt={`${currentUser?.name}avatar`}
+          className="sidebar__avatar"
+        />
+        <p className="sidebar__username">{currentUser?.name}</p>
       </div>
     </aside>
   );

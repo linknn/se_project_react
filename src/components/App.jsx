@@ -199,6 +199,8 @@ function App() {
                   clothingItems={clothingItems}
                   handleOpenClothesModal={handleOpenClothesModal}
                   handleOpenItemModal={handleOpenItemModal}
+                  loggedIn={loggedIn}
+                  currentUser={currentUser}
                 />
               </ProtectedRoute>
             }

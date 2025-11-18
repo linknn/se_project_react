@@ -47,8 +47,8 @@ function Header({
               + Add clothes
             </button>
             <Link className="header__link" to="/profile">
-              <p className="header__username">{currentUser.name}</p>
-              <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+              <p className="header__username">{currentUser?.name}</p>
+              <img src={currentUser?.avatar} alt="User avatar" className="header__avatar" />
             </Link>
           </>
         ) : (
@@ -79,8 +79,8 @@ function Header({
           {loggedIn ? (
             <>
               <div className="header__side">
-                <p className="header__username">{currentUser.name}</p>
-                <img src={currentUser.avatar} alt="User avatar" className="header__avatar" />
+                <p className="header__username">{currentUser?.name}</p>
+                <img src={currentUser?.avatar} alt="User avatar" className="header__avatar" />
               </div>
               <button onClick={handleOpenClothesModal} className="header__add-clothes-btn">
                 + Add clothes
