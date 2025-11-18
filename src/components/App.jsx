@@ -131,6 +131,13 @@ function App() {
       });
   }
 
+  function handleLogout() {
+    localStorage.removeItem("jwt");
+    setLoggedIn(false);
+    setCurrentUser(null);
+    handleCloseModal();
+  }
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -201,6 +208,7 @@ function App() {
                   handleOpenItemModal={handleOpenItemModal}
                   loggedIn={loggedIn}
                   currentUser={currentUser}
+                  onLogout={handleLogout}
                 />
               </ProtectedRoute>
             }

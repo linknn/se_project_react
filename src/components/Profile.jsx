@@ -7,10 +7,11 @@ function Profile({
   handleOpenItemModal,
   loggedIn,
   currentUser,
+  onLogout,
 }) {
   return (
     <div className="profile">
-      <Sidebar currentUser={currentUser} loggedIn={loggedIn} />
+      <Sidebar currentUser={currentUser} loggedIn={loggedIn} onLogout={onLogout} />
 
       <ClothesSection
         clothingItems={clothingItems}

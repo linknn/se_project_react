@@ -1,4 +1,4 @@
-function Sidebar({ currentUser }) {
+function Sidebar({ currentUser, onLogout }) {
   return (
     <aside className="sidebar">
       <div className="sidebar__user-info">
@@ -9,6 +9,9 @@ function Sidebar({ currentUser }) {
         />
         <p className="sidebar__username">{currentUser?.name}</p>
       </div>
+      <button className="sidebar__logout-btn" onClick={onLogout}>
+        Log Out
+      </button>
     </aside>
   );
 }
