@@ -1,13 +1,21 @@
 import ModalWithForm from "./ModalWithForm";
 import { useForm } from "../hooks/useForm";
+import { useEffect } from "react";
 
 function RegisterModal({ isOpen, onClose, onRegister, handleCloseModal }) {
-  const { values, handleChange } = useForm({
+  const { values, handleChange, handleReset } = useForm({
     name: "",
     avatar: "",
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      handleReset();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   //   runs on user submission
   function handleSubmit(evt) {
