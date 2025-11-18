@@ -8,10 +8,16 @@ function Profile({
   loggedIn,
   currentUser,
   onLogout,
+  onEditProfile,
 }) {
   return (
     <div className="profile">
-      <Sidebar currentUser={currentUser} loggedIn={loggedIn} onLogout={onLogout} />
+      <Sidebar
+        currentUser={currentUser}
+        loggedIn={loggedIn}
+        onLogout={onLogout}
+        onEditProfile={onEditProfile}
+      />
 
       <ClothesSection
         clothingItems={clothingItems}

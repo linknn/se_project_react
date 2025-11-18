@@ -13,7 +13,7 @@ import EditProfileModal from "./EditProfileModal";
 
 import ProtectedRoute from "./ProtectedRoute";
 
-import { signup, signin, getUser } from "../utils/auth";
+import { signup, signin, getUser, editProfile } from "../utils/auth";
 
 import { getWeatherData } from "../utils/weatherApi";
 import { addItem, getItems, deleteItem } from "../utils/api";
@@ -143,6 +143,17 @@ function App() {
       });
   }
 
+  function handleEditProfileSubmit(updatedData) {
+    const token = localStorage.getItem("jwt");
+
+    editProfile(updatedData, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        handleCloseModal();
+      })
+      .catch((err) => console.error("Profile update error:", err));
+  }
+
   function handleLogout() {
     localStorage.removeItem("jwt");
     setLoggedIn(false);
@@ -222,6 +233,7 @@ function App() {
                     loggedIn={loggedIn}
                     currentUser={currentUser}
                     onLogout={handleLogout}
+                    onEditProfile={handleOpenEditProfileModal}
                   />
                 </ProtectedRoute>
               }
@@ -251,9 +263,9 @@ function App() {
             onClose={handleCloseModal}
           />
           <EditProfileModal
-            currentUser={currentUser}
-            onLogout={handleLogout}
-            onEditProfile={handleOpenEditProfileModal}
+            isOpen={activeModal === "edit-profile-modal"}
+            onClose={handleCloseModal}
+            onEditProfile={handleEditProfileSubmit}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
