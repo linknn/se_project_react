@@ -9,6 +9,7 @@ import ItemModal from "./ItemModal";
 import AddItemModal from "./AddItemModal";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
+import EditProfileModal from "./EditProfileModal";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -44,6 +45,10 @@ function App() {
 
   function handleOpenLoginModal() {
     setActiveModal("login-modal");
+  }
+
+  function handleOpenEditProfileModal() {
+    setActiveModal("edit-profile-modal");
   }
 
   function handleMobileOpenMenu() {
@@ -244,6 +249,11 @@ function App() {
             isOpen={activeModal === "item-modal"}
             handleDeleteItem={handleDeleteItem}
             onClose={handleCloseModal}
+          />
+          <EditProfileModal
+            currentUser={currentUser}
+            onLogout={handleLogout}
+            onEditProfile={handleOpenEditProfileModal}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

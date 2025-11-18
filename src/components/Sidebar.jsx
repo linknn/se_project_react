@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Sidebar({ currentUser, onLogout }) {
+function Sidebar({ currentUser, onLogout, onEditProfile }) {
   const [avatarError, setAvatarError] = useState(false);
 
   const userAvatarInitial = () => {
@@ -25,8 +25,14 @@ function Sidebar({ currentUser, onLogout }) {
         ) : (
           <div className="sidebar__avatar sidebar__avatar_initial">{userAvatarInitial()}</div>
         )}
+
         <p className="sidebar__username">{currentUser?.name}</p>
       </div>
+
+      <button className="sidebar__edit-btn" onClick={onEditProfile}>
+        Edit Profile
+      </button>
+
       <button className="sidebar__logout-btn" onClick={onLogout}>
         Log Out
       </button>
