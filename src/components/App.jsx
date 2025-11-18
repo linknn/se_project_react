@@ -107,6 +107,12 @@ function App() {
         // save token
         localStorage.setItem("jwt", res.token);
 
+        // fetch user data immediately
+        return getUser(res.token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
+        setLoggedIn(true);
         handleCloseModal();
       })
       .catch((err) => {
