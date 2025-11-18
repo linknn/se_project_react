@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import logo from "../images/logo.png";
 // import avatar from "../images/terrence.png";
@@ -32,6 +32,10 @@ function Header({
     const name = currentUser?.name || "";
     return name ? name[0].toUpperCase() : "";
   };
+
+  useEffect(() => {
+    setAvatarError(false);
+  }, [currentUser]);
 
   return (
     <header className="header">
