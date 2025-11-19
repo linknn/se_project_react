@@ -5,7 +5,7 @@ function Profile({
   clothingItems,
   handleOpenClothesModal,
   handleOpenItemModal,
-  handleCardLike,
+  onCardLike,
   loggedIn,
   currentUser,
   onLogout,
@@ -24,7 +24,7 @@ function Profile({
         clothingItems={clothingItems}
         handleOpenClothesModal={handleOpenClothesModal}
         handleOpenItemModal={handleOpenItemModal}
-        onCardLike={handleCardLike}
+        onCardLike={onCardLike}
         loggedIn={loggedIn}
       />
     </div>

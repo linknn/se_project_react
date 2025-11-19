@@ -35,13 +35,13 @@ function deleteItem(cardId, token) {
 }
 
 function addCardLike(id, token) {
-  return fetch(`{baseUrl}/items${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-  }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+  }).then((res) => (res.ok ? res.json() : Promise.reject(`Error adding like: ${res.status}`)));
 }
 
 function removeCardLike(id, token) {
@@ -51,7 +51,7 @@ function removeCardLike(id, token) {
       authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-  }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+  }).then((res) => (res.ok ? res.json() : Promise.reject(`Error removing like: ${res.status}`)));
 }
 
 export { getItems, addItem, deleteItem, baseUrl, addCardLike, removeCardLike };

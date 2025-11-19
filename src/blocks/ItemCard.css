@@ -54,7 +54,7 @@
   cursor: pointer;
 }
 .card__like-btn_liked {
-  background: url("../images/like_filled.png");
+  background: url("../images/like_filled.png") no-repeat center;
 }
 .card__like-btn_hidden {
   display: none;

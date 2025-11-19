@@ -163,20 +163,17 @@ function App() {
 
   function handleCardLike(item) {
     const token = localStorage.getItem("jwt");
-    if (!token) return;
+    if (!token || !currentUser) return;
 
-    const isLiked = item.likes.some((id) => === currentUser?._id);
+    const isLiked = item.likes.some((id) => id === currentUser?._id);
 
-const apiCall = isLiked ? removeCardLike : addCardLike;
+    const apiCall = isLiked ? removeCardLike : addCardLike;
 
-apiCall(item._id, token)
-.then((updatedItem) => {
-  setClothingItems((items) =>
-  items.map((i) => (i._id === item._id ? updatedItem : i))
-);
-})
-.catch((err) => console.error("Like error:", err));
-
+    apiCall(item._id, token)
+      .then((updatedItem) => {
+        setClothingItems((items) => items.map((i) => (i._id === item._id ? updatedItem : i)));
+      })
+      .catch((err) => console.error("Like error:", err));
   }
 
   useEffect(() => {
@@ -249,7 +246,7 @@ apiCall(item._id, token)
                     clothingItems={clothingItems}
                     handleOpenClothesModal={handleOpenClothesModal}
                     handleOpenItemModal={handleOpenItemModal}
-                    onCardLike={handleAddItemSubmit}
+                    onCardLike={handleCardLike}
                     loggedIn={loggedIn}
                     currentUser={currentUser}
                     onLogout={handleLogout}
