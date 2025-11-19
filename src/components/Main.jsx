@@ -6,7 +6,7 @@ import ItemCard from "./ItemCard";
 
 import getWeatherCondition from "../utils/weatherApi.js";
 
-function Main({ clothingItems, handleOpenItemModal, weatherData, loggedIn }) {
+function Main({ clothingItems, handleOpenItemModal, handleCardLike, weatherData, loggedIn }) {
   const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
   const weatherCondition = getWeatherCondition(weatherData.temp.F);
 
@@ -27,6 +27,7 @@ function Main({ clothingItems, handleOpenItemModal, weatherData, loggedIn }) {
               key={item._id}
               data={item}
               onCardClick={handleOpenItemModal}
+              onCardLike={handleCardLike}
               loggedIn={loggedIn}
             />
           );

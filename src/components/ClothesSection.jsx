@@ -3,7 +3,12 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 import ItemCard from "./ItemCard";
 
-function ClothesSection({ clothingItems, handleOpenClothesModal, handleOpenItemModal }) {
+function ClothesSection({
+  clothingItems,
+  handleOpenClothesModal,
+  handleOpenItemModal,
+  handleCardLike,
+}) {
   const currentUser = useContext(CurrentUserContext);
 
   const userItems = clothingItems.filter((item) => item.owner === currentUser?._id);
@@ -16,9 +21,17 @@ function ClothesSection({ clothingItems, handleOpenClothesModal, handleOpenItemM
           + Add New
         </button>
       </div>
+
       <ul className="card-list">
         {userItems.map((item) => {
-          return <ItemCard key={item._id} data={item} onCardClick={handleOpenItemModal} />;
+          return (
+            <ItemCard
+              key={item._id}
+              data={item}
+              onCardClick={handleOpenItemModal}
+              onCardLike={handleCardLike}
+            />
+          );
         })}
       </ul>
     </section>

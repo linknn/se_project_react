@@ -16,7 +16,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import { signup, signin, getUser, editProfile } from "../utils/auth";
 
 import { getWeatherData } from "../utils/weatherApi";
-import { addItem, getItems, deleteItem } from "../utils/api";
+import { addItem, getItems, deleteItem, addCardLike, removeCardLike } from "../utils/api";
 import CurrentTemperatureUnitContext from "../utils/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
@@ -161,6 +161,24 @@ function App() {
     handleCloseModal();
   }
 
+  function handleCardLike(item) {
+    const token = localStorage.getItem("jwt");
+    if (!token) return;
+
+    const isLiked = item.likes.some((id) => === currentUser?._id);
+
+const apiCall = isLiked ? removeCardLike : addCardLike;
+
+apiCall(item._id, token)
+.then((updatedItem) => {
+  setClothingItems((items) =>
+  items.map((i) => (i._id === item._id ? updatedItem : i))
+);
+})
+.catch((err) => console.error("Like error:", err));
+
+  }
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -219,6 +237,7 @@ function App() {
                   weatherData={weatherData}
                   clothingItems={clothingItems}
                   handleOpenItemModal={handleOpenItemModal}
+                  handleCardLike={handleCardLike}
                 />
               }
             />
@@ -230,6 +249,7 @@ function App() {
                     clothingItems={clothingItems}
                     handleOpenClothesModal={handleOpenClothesModal}
                     handleOpenItemModal={handleOpenItemModal}
+                    onCardLike={handleAddItemSubmit}
                     loggedIn={loggedIn}
                     currentUser={currentUser}
                     onLogout={handleLogout}

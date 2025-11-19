@@ -19,9 +19,15 @@
   list-style-type: none;
 }
 
-.card__title {
+.card__title-wrapper {
   position: absolute;
+  gap: 10px;
   top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.card__title {
   margin: 0;
   font-size: 16px;
   background-color: #ffffff;
@@ -38,6 +44,20 @@
 .card:hover {
   cursor: pointer;
   opacity: 70%;
+}
+
+.card__like-btn {
+  width: 20px;
+  height: 20px;
+  background: url("../images/like_default.png") no-repeat center;
+  border: none;
+  cursor: pointer;
+}
+.card__like-btn_liked {
+  background: url("../images/like_filled.png");
+}
+.card__like-btn_hidden {
+  display: none;
 }
 
 @media screen and (max-width: 630px) {

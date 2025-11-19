@@ -34,4 +34,24 @@ function deleteItem(cardId, token) {
   });
 }
 
-export { getItems, addItem, deleteItem, baseUrl };
+function addCardLike(id, token) {
+  return fetch(`{baseUrl}/items${id}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+}
+
+function removeCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+}
+
+export { getItems, addItem, deleteItem, baseUrl, addCardLike, removeCardLike };
